@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         }
 
         /* open a file for reading */
-        if((read_file = fopen(argv[j], "r+")) == NULL) {
+        if((read_file = fopen(argv[j], "r")) == NULL) {
             fprintf(stderr, "Error: could not open %s\n", argv[j]);
             perror("");
             return -2;
