@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -36,15 +37,13 @@ int main(int argc, char **argv)
 
         /* open a file for reading */
         if((read_file = fopen(argv[j], "r")) == NULL) {
-            fprintf(stderr, "Error: could not open %s\n", argv[j]);
-            perror("");
+            fprintf(stderr, "Error: could not open %s\n%s", argv[j], strerror(errno));
             return -2;
         }
 
         /* open a file for writing */
         if((write_file = fopen(argv[j + 1], "w")) == NULL) {
-            fprintf(stderr, "Error: could not write to %s\n", argv[j + 1]);
-            perror("");
+            fprintf(stderr, "Error: could not open %s\n%s", argv[j + 1], strerror(errno));
             return -3;
         }
 
