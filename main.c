@@ -29,8 +29,13 @@ int main(int argc, char **argv)
         FILE *read_file, *write_file;
         size_t bytes_read = BUFFER_SIZE;
 
+        if(strcmp(argv[j], argv[j + 1]) == 0) {
+            printf("Warning: using the same file for input and output is not supported\n");
+            continue;
+        }
+
         /* open a file for reading */
-        if((read_file = fopen(argv[j], "r")) == NULL) {
+        if((read_file = fopen(argv[j], "r+")) == NULL) {
             fprintf(stderr, "Error: could not open %s\n", argv[j]);
             perror("");
             return -2;
