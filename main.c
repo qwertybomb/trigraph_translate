@@ -78,18 +78,6 @@ int main(int argc, char **argv)
                         break;
                     case '\\':
                         WRITE_BUFFER("\?\?/", 3);
-
-                        /* handle cases such as \\ */
-                        if (++i < BUFFER_SIZE) {
-                            switch (buffer[i]) {
-                                case '\\':
-                                    WRITE_BUFFER("\?\?/", 3);
-                                    break;
-                                default:
-                                    WRITE_BUFFER(buffer + i, 1);
-                                    break;
-                            }
-                        }
                         break;
                     case '^':
                         WRITE_BUFFER("\?\?'", 3);
